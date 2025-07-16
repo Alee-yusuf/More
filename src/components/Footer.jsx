@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-scroll';
-import { useNavigate } from 'react-router-dom';
 import logoWhite from '../assets/images/logo-white.png';
 import logoDark from '../assets/images/logo-dark.png';
 
 const Footer = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isLoginVisible, setIsLoginVisible] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   // Listen for dark mode changes
   useEffect(() => {
@@ -33,14 +28,6 @@ const Footer = () => {
 
     return () => darkModeObserver.disconnect();
   }, []);
-
-  const handleLogin = () => {
-    if (username === 'admin' && password === 'password') {
-      navigate('/dashboard');
-    } else {
-      alert('Invalid credentials');
-    }
-  };
 
   return (
     <motion.footer
@@ -159,58 +146,6 @@ const Footer = () => {
           </p>
         </motion.div>
 
-        {/* Admin Login Button */}
-        <div className="text-center mt-4">
-          <button
-            onClick={() => setIsLoginVisible(true)}
-            className="py-2 px-4 bg-accent hover:bg-accent-dark text-white rounded-xl transition-colors duration-200"
-          >
-            Admin Login
-          </button>
-        </div>
-
-        {/* Login Popup */}
-        {isLoginVisible && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setIsLoginVisible(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-background-light dark:bg-primary w-full max-w-md p-6 rounded-2xl shadow-float dark:shadow-float-dark"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h3 className="text-2xl font-bold text-text-light dark:text-text-dark mb-4">
-                Admin Login
-              </h3>
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="w-full mb-4 p-3 bg-accent/5 dark:bg-accent/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all duration-200"
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full mb-4 p-3 bg-accent/5 dark:bg-accent/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all duration-200"
-              />
-              <button
-                onClick={handleLogin}
-                className="w-full py-3 bg-accent hover:bg-accent-dark text-white rounded-xl transition-colors duration-200"
-              >
-                Login
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
       </div>
     </motion.footer>
   );
