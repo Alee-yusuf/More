@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaLinkedin, FaTwitter, FaEnvelope, FaAward, 
-  FaBriefcase, FaClock, FaTrophy, FaStar, FaTimes,
-  FaUser, FaArrowRight
-} from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
+import { FaAward } from 'react-icons/fa';
+import { FaBriefcase } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa';
+import { FaTrophy } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 
 const OurTeam = () => {
   const [selectedMember, setSelectedMember] = useState(null);

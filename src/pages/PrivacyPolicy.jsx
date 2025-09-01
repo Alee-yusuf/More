@@ -24,7 +24,6 @@ const PrivacyPolicy = () => {
         </div>
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">KMV Enterprises - Comprehensive Privacy Policy</h1>
-          <p className="text-muted-light dark:text-text-dark/80">Effective Date: September 1, 2025</p>
         </div>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
