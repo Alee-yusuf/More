@@ -250,7 +250,7 @@ const Careers = () => {
 
   return (
     <section 
-      id="career" 
+      id="careers" 
       className="py-20 bg-gradient-to-b from-background-light to-background-light/90 dark:from-primary dark:to-primary/90"
     >
       <div className="container mx-auto">

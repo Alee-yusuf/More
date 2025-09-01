@@ -2,50 +2,120 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BarChart3, Users, Lightbulb, TrendingUp, 
-  Boxes, Rocket, Target, Shield, X
+  Boxes, Rocket, Target, Shield, X, Check, ArrowRight,
+  Award, Globe, Handshake, Heart, Star, UserCheck, Briefcase
 } from 'lucide-react';
 
 const AboutUs = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
+  // Company Statistics
   const stats = [
     { 
       number: '3+', 
       label: 'Years Experience',
-      icon: <Users className="w-8 h-8" />,
-      description: 'Pioneering excellence in technology'
+      icon: <Award className="w-8 h-8" />,
+      description: 'Delivering excellence in technology solutions',
+      color: 'from-blue-500 to-blue-400'
+    },
+    { 
+      number: '50+', 
+      label: 'Expert Team',
+      icon: <UserCheck className="w-8 h-8" />,
+      description: 'Dedicated professionals driving innovation',
+      color: 'from-green-500 to-green-400'
     },
     { 
       number: '7+', 
       label: 'Ongoing Projects',
-      icon: <Target className="w-8 h-8" />,
-      description: 'Delivering impactful solutions'
-    },
-    { 
-      number: '50+', 
-      label: 'Expert Consultants',
-      icon: <Lightbulb className="w-8 h-8" />,
-      description: 'Innovative minds at work'
+      icon: <Briefcase className="w-8 h-8" />,
+      description: 'Transforming businesses daily',
+      color: 'from-purple-500 to-purple-400'
     },
     { 
       number: '1M+', 
-      label: 'Client Served',
-      icon: <TrendingUp className="w-8 h-8" />,
-      description: 'Building lasting partnerships'
+      label: 'Happy Clients',
+      icon: <Heart className="w-8 h-8" />,
+      description: 'Building lasting relationships',
+      color: 'from-red-500 to-red-400'
     },
   ];
 
+  // Core Services
   const services = [
-    { icon: <BarChart3 />, title: "Business Analytics" },
-    { icon: <Boxes />, title: "Strategic Planning" },
-    { icon: <Rocket />, title: "Innovation" },
-    { icon: <Shield />, title: "Risk Management" },
+    { 
+      icon: <BarChart3 className="w-6 h-6" />, 
+      title: "Business Analytics",
+      description: "Data-driven insights for strategic decisions"
+    },
+    { 
+      icon: <Boxes className="w-6 h-6" />, 
+      title: "Strategic Planning",
+      description: "Roadmaps for sustainable growth"
+    },
+    { 
+      icon: <Rocket className="w-6 h-6" />, 
+      title: "Digital Innovation",
+      description: "Cutting-edge solutions for the future"
+    },
+    { 
+      icon: <Shield className="w-6 h-6" />, 
+      title: "Risk Management",
+      description: "Protecting your business interests"
+    },
   ];
 
+  // Team Members
+  const team = [
+    {
+      name: "Alex Johnson",
+      role: "CEO & Founder",
+      bio: "Visionary leader with 10+ years in tech innovation",
+      image: "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      name: "Sarah Williams",
+      role: "CTO",
+      bio: "Tech strategist and solution architect",
+      image: "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      name: "Michael Chen",
+      role: "Head of Operations",
+      bio: "Operational excellence specialist",
+      image: "https://randomuser.me/api/portraits/men/75.jpg"
+    }
+  ];
+
+  // Testimonials
+  const testimonials = [
+    {
+      quote: "KMV transformed our business with their innovative solutions. Truly a game-changer!",
+      author: "James Wilson",
+      company: "TechNova Inc.",
+      rating: 5
+    },
+    {
+      quote: "Exceptional service and outstanding results. Highly recommended!",
+      author: "Emily Parker",
+      company: "Global Ventures",
+      rating: 5
+    },
+    {
+      quote: "Professional team that delivers beyond expectations.",
+      author: "David Kim",
+      company: "NextGen Solutions",
+      rating: 4
+    }
+  ];
+
+  // Company Story
   const storyContent = [
     {
-      title: "Our Beginning",
-      content: "KMV was founded in January 2024 by three visionary partners who shared a dream of creating something truly transformative. From our humble beginnings in a small apartment, we embarked on our journey with limited resources but unlimited determination and passion."
+      title: "Our Humble Beginnings",
+      content: "Founded in 2024, KMV started as a small team of passionate technologists with a vision to revolutionize the industry. From our first office in a shared workspace, we've grown into a trusted partner for businesses worldwide.",
+      icon: <Globe className="w-6 h-6" />
     },
     {
       title: "Growth & Evolution",
@@ -227,7 +297,7 @@ const AboutUs = () => {
                 >
                   <X className="w-5 h-5" />
                 </button>
-                
+
                 <div className="text-center mb-8">
                   <h3 className="text-2xl sm:text-3xl font-bold text-text-light dark:text-text-dark mb-2">
                     Our Journey

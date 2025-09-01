@@ -31,11 +31,11 @@ const Solutions = () => {
   ];
 
   return (
-    <section id="solutions" className="relative min-h-screen bg-gradient-to-br from-primary/5 to-background-light dark:from-primary/10 dark:to-primary/5 py-20 px-4 sm:px-6 md:px-10 overflow-hidden">
+    <section id="solutions" className="relative min-h-screen bg-background-light dark:bg-primary/95 py-20 px-4 sm:px-6 md:px-10 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent/5 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute -bottom-20 left-20 w-72 h-72 bg-accent/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent/5 dark:bg-accent-light/5 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute -bottom-20 left-20 w-72 h-72 bg-accent/10 dark:bg-accent-light/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
       </div>
 
       <motion.div 
@@ -50,9 +50,9 @@ const Solutions = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="inline-block text-sm font-medium text-accent mb-3">Our Services</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-text-light dark:text-text-dark mb-4">
-            Innovative <span className="text-accent">Solutions</span>
+          <span className="inline-block text-sm font-medium text-accent dark:text-accent-light mb-3">Our Services</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-text-light/90 dark:text-text-dark/90 mb-4">
+            Innovative <span className="text-accent dark:text-accent-light">Solutions</span>
           </h2>
           <div className="w-20 h-1 bg-accent mx-auto mt-4"></div>
         </motion.div>
@@ -62,7 +62,7 @@ const Solutions = () => {
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
-              className="group bg-white/80 dark:bg-primary-dark/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 cursor-pointer border border-gray-100 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative"
+              className="group bg-white/90 dark:bg-primary/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 cursor-pointer border border-gray-100/50 dark:border-gray-800/50 shadow-lg hover:shadow-xl hover:shadow-accent/5 dark:hover:shadow-accent-light/5 transition-all duration-300 overflow-hidden relative"
               whileHover={{ y: -5, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedSolution(solution)}
@@ -73,19 +73,19 @@ const Solutions = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10">
                 <motion.div 
-                  className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:bg-accent/20 transition-colors duration-300"
+                  className="w-16 h-16 bg-accent/10 dark:bg-accent-light/10 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:bg-accent/20 dark:group-hover:bg-accent-light/20 transition-colors duration-300"
                   whileHover={{ rotate: 5, scale: 1.05 }}
                 >
-                  {React.cloneElement(solution.icon, { className: 'w-8 h-8 text-accent' })}
+                  {React.cloneElement(solution.icon, { className: 'w-8 h-8 text-accent dark:text-accent-light' })}
                 </motion.div>
-                <h3 className="text-xl font-bold text-text-light dark:text-text-dark mb-3 group-hover:text-accent transition-colors duration-300">
+                <h3 className="text-xl font-bold text-text-light/90 dark:text-text-dark/90 mb-3 group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-300">
                   {solution.title}
                 </h3>
-                <p className="text-muted-light dark:text-text-dark/80 text-sm mb-4 line-clamp-2">
+                <p className="text-text-light/70 dark:text-text-dark/70 text-sm mb-4 line-clamp-2">
                   {solution.description.substring(0, 100)}...
                 </p>
-                <div className="flex items-center text-accent font-medium text-sm group-hover:translate-x-1 transition-transform duration-300 justify-center sm:justify-start">
-                  Learn more <FiArrowRight className="ml-2" />
+                <div className="flex items-center text-accent dark:text-accent-light font-medium text-sm group-hover:translate-x-1 transition-all duration-300 justify-center sm:justify-start">
+                  Learn more <FiArrowRight className="ml-2 group-hover:ml-3 transition-all duration-300" />
                 </div>
               </div>
             </motion.div>
@@ -104,14 +104,14 @@ const Solutions = () => {
             onClick={(e) => e.target === e.currentTarget && setSelectedSolution(null)}
           >
             <motion.div 
-              className="bg-white dark:bg-primary-dark rounded-2xl overflow-hidden w-full max-w-2xl shadow-2xl"
+              className="bg-white dark:bg-primary/95 backdrop-blur-md rounded-2xl overflow-hidden w-full max-w-2xl shadow-2xl border border-gray-100/30 dark:border-gray-800/50"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             >
               {/* Modal Header */}
-              <div className="bg-gradient-to-r from-accent/90 to-accent/70 p-6 text-white">
+              <div className="bg-gradient-to-r from-accent/90 to-accent/80 dark:from-accent-light/90 dark:to-accent-light/80 p-6 text-white">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
@@ -131,7 +131,7 @@ const Solutions = () => {
               
               {/* Modal Body */}
               <div className="p-6 max-h-[70vh] overflow-y-auto">
-                <p className="text-muted-light dark:text-text-dark/80 mb-6 leading-relaxed">
+                <p className="text-text-light/80 dark:text-text-dark/80 mb-6 leading-relaxed">
                   {selectedSolution.description}
                 </p>
                 
@@ -150,16 +150,16 @@ const Solutions = () => {
                         transition={{ delay: 0.1 * i }}
                       >
                         <span className="text-accent mr-2 mt-1">•</span>
-                        <span className="text-muted-light dark:text-text-dark/80">{feature}</span>
+                        <span className="text-text-light/80 dark:text-text-dark/80">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </div>
                 
                 <div className="mt-8 pt-6 border-t border-gray-100 dark:border-white/10">
-                  <button className="group inline-flex items-center px-6 py-3 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-colors duration-300">
+                  <button className="group inline-flex items-center px-6 py-3 bg-accent dark:bg-accent-light text-white rounded-lg font-medium hover:bg-accent/90 dark:hover:bg-accent-light/90 transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 dark:hover:shadow-accent-light/20">
                     Get Started
-                    <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-all duration-300" />
                   </button>
                 </div>
               </div>
