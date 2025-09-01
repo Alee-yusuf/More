@@ -12,9 +12,18 @@ import ApplyNow from './components/ApplyNow';
 import Footer from './components/Footer';
 import Dashboard from './components/dashboard';
 import Chatbot from './components/Chatbot';
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  const Layout = ({ children }) => (
+    <div className="App">
+      <Navbar />
+      {children}
+    </div>
+  );
 
   return (
     <Router>
@@ -22,24 +31,29 @@ const App = () => {
         {isLoading ? (
           <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
         ) : (
-          <div className="App">
-            <Navbar />
-            <Routes>
+          <Routes>
               <Route path="/" element={
-                <>
-                  <Hero />
-                  <AboutUs />
-                  <OurTeam />
-                  <Solutions />
-                  <Careers />
-                  <ApplyNow />
-                  <Footer />
-                  <Chatbot />
-                </>
+                <Layout>
+                  <>
+                    <Hero />
+                    <AboutUs />
+                    <OurTeam />
+                    <Solutions />
+                    <Careers />
+                    <ApplyNow />
+                    <Footer />
+                    <Chatbot />
+                  </>
+                </Layout>
               } />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={
+                <Layout>
+                  <Dashboard />
+                </Layout>
+              } />
+              <Route path="/terms" element={<TermsAndConditions />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
             </Routes>
-          </div>
         )}
       </AnimatePresence>
     </Router>

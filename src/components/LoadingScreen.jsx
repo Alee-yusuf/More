@@ -6,7 +6,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoadingComplete();
-    }, 4000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [onLoadingComplete]);
@@ -28,7 +28,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
             scale: [0, 1],
             rotate: [0, position.includes('right') ? 90 : -90]
           }}
-          transition={{ duration: 1.5, delay: i * 0.3, ease: "easeInOut" }}
+          transition={{ duration: 0.6, delay: i * 0.1, ease: "easeInOut" }}
         >
           <motion.div 
             className="w-full h-full border-4 border-primary/20"
@@ -122,7 +122,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
             scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 2,
+            duration: 0.8,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -156,7 +156,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
                 opacity: [0.3, 1, 0.3],
               }}
               transition={{
-                duration: 1.5,
+                duration: 0.6,
                 delay: i * 0.3,
                 repeat: Infinity,
                 ease: "easeInOut"

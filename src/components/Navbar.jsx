@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { FaSun, FaMoon, FaBars } from 'react-icons/fa';
 import logoWhite from '../assets/images/logo-white.png';
 import logoDark from '../assets/images/logo-dark.png';
 
@@ -37,10 +38,10 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-sm ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-sm border-b border-gray-100/10 ${
         isScrolled
-          ? 'py-2 bg-background-light/90 dark:bg-primary/90 shadow-lg'
-          : 'py-3 bg-background-light/80 dark:bg-primary/80'
+          ? 'py-2 bg-background-light/95 dark:bg-primary/95 shadow-lg'
+          : 'py-3 bg-background-light/90 dark:bg-primary/90'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -71,10 +72,10 @@ const Navbar = () => {
                 spy={true}
                 offset={-100}
                 onSetActive={() => setActiveSection(item.section)}
-                className={`px-4 py-2 cursor-pointer ${
+                className={`px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                   activeSection === item.section
-                    ? 'text-accent'
-                    : 'text-text-light dark:text-text-dark hover:text-accent'
+                    ? 'text-accent dark:text-accent-light font-semibold'
+                    : 'text-text-light/90 hover:text-accent dark:text-text-dark/90 dark:hover:text-accent-light/90'
                 }`}
               >
                 {item.name}
@@ -84,7 +85,7 @@ const Navbar = () => {
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-accent"
             >
-              {isDarkMode ? '☀️' : '🌙'}
+              {isDarkMode ? <FaSun /> : <FaMoon />}
             </button>
           </div>
 
@@ -94,13 +95,13 @@ const Navbar = () => {
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-accent"
             >
-              {isDarkMode ? '☀️' : '🌙'}
+              {isDarkMode ? <FaSun /> : <FaMoon />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-accent"
             >
-              ☰
+              <FaBars />
             </button>
           </div>
         </div>

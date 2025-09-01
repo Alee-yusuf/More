@@ -93,14 +93,14 @@ const Careers = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
-        className="bg-background-light dark:bg-primary w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-float dark:shadow-float-dark"
+        className="bg-background-light/95 dark:bg-primary/95 backdrop-blur-sm rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative border border-gray-200/20 dark:border-gray-700/20 shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
         <div className="relative p-6">
@@ -200,14 +200,14 @@ const Careers = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.8, opacity: 0 }}
-        className="bg-background-light dark:bg-primary w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-float dark:shadow-float-dark"
+        className="bg-background-light/95 dark:bg-primary/95 backdrop-blur-sm rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative border border-gray-200/20 dark:border-gray-700/20 shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
         <div className="relative p-6">
@@ -249,7 +249,10 @@ const Careers = () => {
   );
 
   return (
-    <section id="career" className="min-h-screen bg-background-light dark:bg-primary py-20 px-4">
+    <section 
+      id="career" 
+      className="py-20 bg-gradient-to-b from-background-light to-background-light/90 dark:from-primary dark:to-primary/90"
+    >
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -257,7 +260,7 @@ const Careers = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold text-text-light dark:text-text-dark mb-4">
+          <h2 className="text-4xl font-bold text-text-light dark:text-text-dark mb-4 bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent inline-block">
             Career <span className="text-accent">Opportunities</span>
           </h2>
           <p className="text-muted-light dark:text-text-dark/80 text-lg max-w-2xl mx-auto">
@@ -268,20 +271,24 @@ const Careers = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5" />
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-light dark:text-text-dark/50">
+                <Search className="w-5 h-5" />
+              </div>
               <input
                 type="text"
                 placeholder="Search positions..."
-                className="w-full pl-10 pr-4 py-3 bg-accent/5 dark:bg-accent/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all duration-200"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-200/70 dark:border-gray-700/70 bg-background-light/90 dark:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all duration-200 hover:border-accent/30"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             
             <div className="relative">
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5" />
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-light dark:text-text-dark/50">
+                <Filter className="w-5 h-5" />
+              </div>
               <select
-                className="w-full pl-10 pr-4 py-3 bg-accent/5 dark:bg-accent/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all duration-200 appearance-none"
+                className="w-full pl-12 pr-10 py-3 rounded-lg border border-gray-200/70 dark:border-gray-700/70 bg-background-light/90 dark:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all duration-200 hover:border-accent/30 appearance-none"
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
               >
@@ -292,9 +299,11 @@ const Careers = () => {
             </div>
 
             <div className="relative">
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5" />
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-light dark:text-text-dark/50">
+                <Filter className="w-5 h-5" />
+              </div>
               <select
-                className="w-full pl-10 pr-4 py-3 bg-accent/5 dark:bg-accent/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all duration-200 appearance-none"
+                className="w-full pl-12 pr-10 py-3 rounded-lg border border-gray-200/70 dark:border-gray-700/70 bg-background-light/90 dark:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent transition-all duration-200 hover:border-accent/30 appearance-none"
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
               >
@@ -342,7 +351,7 @@ const Careers = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-6 py-2 bg-accent hover:bg-accent-dark text-white rounded-xl flex items-center gap-2 transition-colors duration-200 shadow-glow dark:shadow-glow-dark"
+                      className="px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105 shadow-lg hover:shadow-accent/20"
                     >
                       View Details
                       <ChevronRight className="w-4 h-4" />

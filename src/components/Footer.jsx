@@ -31,16 +31,15 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="w-full py-12 bg-background-light dark:bg-primary relative overflow-hidden"
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+      className="w-full py-12 bg-background-light dark:bg-primary relative overflow-hidden border-t border-gray-100 dark:border-primary-dark/20"
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       {/* Decorative background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-transparent to-accent/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10">
         <motion.div 
-          className="absolute right-0 top-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+          className="absolute right-0 top-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.1, 0.15, 0.1],
@@ -91,13 +90,13 @@ const Footer = () => {
           <div className="w-full md:w-auto text-center md:text-left">
             <div className="space-y-2">
               <p className="text-sm font-medium text-text-light dark:text-text-dark">
-              Old Airport Building, 69 Abid Majeed Rd, Cantonment, Lahore, Punjab 54000, Pakistan
+              1001 S. Main St. STE 500, Kalispell, Montana 59901, United States
               </p>
               <p className="text-sm text-muted-light dark:text-text-dark/80">
                 contact@kmventerprises.com
               </p>
               <p className="text-sm text-muted-light dark:text-text-dark/80">
-              +92 327 1192722
+              +1 (605) 971-3574
               </p>
             </div>
           </div>
@@ -141,9 +140,25 @@ const Footer = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-sm text-muted-light dark:text-text-dark/60">
-            &copy; {new Date().getFullYear()} KMV Enterprises. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <p className="text-sm text-muted-light dark:text-text-dark/60">
+              &copy; {new Date().getFullYear()} KMV Enterprises. All rights reserved.
+            </p>
+            <div className="flex gap-4">
+              <a 
+                href="/terms" 
+                className="text-sm text-muted-light dark:text-text-dark/60 hover:text-accent transition-colors"
+              >
+                Terms & Conditions
+              </a>
+              <a 
+                href="/privacy" 
+                className="text-sm text-muted-light dark:text-text-dark/60 hover:text-accent transition-colors"
+              >
+                Privacy Policy
+              </a>
+            </div>
+          </div>
         </motion.div>
 
       </div>

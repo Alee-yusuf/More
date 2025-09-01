@@ -188,7 +188,7 @@ const ApplyNow = () => {
 
               <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-accent via-accent/80 to-accent text-text-dark mt-8 py-4 px-6 rounded-lg font-medium flex items-center justify-center space-x-3 group hover:shadow-lg hover:shadow-accent/25 transition-all duration-300"
+                className="w-full bg-accent text-text-dark mt-8 py-4 px-6 rounded-lg font-medium flex items-center justify-center space-x-3 group hover:shadow-lg hover:shadow-accent/25 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 variants={formFieldVariants}

@@ -14,7 +14,7 @@ const OurTeam = () => {
       role: 'CEO & Founder',
       expertise: 'Strategic Leadership',
       experience: '15+ years',
-      image: '/api/placeholder/400/400',
+      image: null,
       achievements: [
         'Forbes 30 Under 30',
         'Led 100M+ revenue growth',
@@ -32,7 +32,7 @@ const OurTeam = () => {
       role: 'CTO',
       expertise: 'Technical Innovation',
       experience: '12+ years',
-      image: '/api/placeholder/400/400',
+      image: null,
       achievements: [
         'Tech Innovator of the Year',
         'Published 15+ Patents',
@@ -50,7 +50,7 @@ const OurTeam = () => {
       role: 'CFO',
       expertise: 'Financial Strategy',
       experience: '10+ years',
-      image: '/api/placeholder/400/400',
+      image: null,
       achievements: [
         'Financial Excellence Award',
         'Managed $500M Portfolio',
@@ -102,104 +102,144 @@ const OurTeam = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         onClick={handleBackgroundClick}
       >
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
-          className="bg-white dark:bg-primary-dark rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+          initial={{ scale: 0.9, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 20 }}
+          className="bg-white dark:bg-primary-dark rounded-2xl overflow-hidden w-full max-w-2xl shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="relative">
-            <motion.button
-              onClick={handleCloseClick}
-              whileTap={{ scale: 0.95 }}
-              className="absolute right-0 top-0 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full z-10 touch-none"
-              style={{ touchAction: 'none' }}
-            >
-              <FaTimes className="w-6 h-6" />
-            </motion.button>
-            
-            <div className="flex flex-col md:flex-row gap-6 pt-8 md:pt-0">
-              <div className="w-full md:w-1/3">
-                <motion.div
-                  className="relative rounded-xl overflow-hidden"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full aspect-square object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </motion.div>
-                
-                <div className="flex justify-center gap-4 mt-4">
-                  <motion.a whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
-                    className="p-2 bg-accent/10 hover:bg-accent/20 rounded-full text-accent">
-                    <FaLinkedin className="w-5 h-5" />
-                  </motion.a>
-                  <motion.a whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
-                    className="p-2 bg-accent/10 hover:bg-accent/20 rounded-full text-accent">
-                    <FaTwitter className="w-5 h-5" />
-                  </motion.a>
-                  <motion.a whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
-                    className="p-2 bg-accent/10 hover:bg-accent/20 rounded-full text-accent">
-                    <FaEnvelope className="w-5 h-5" />
-                  </motion.a>
+          {/* Modal Header */}
+          <div className="bg-gradient-to-r from-accent/90 to-accent/70 p-6 text-white">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
+                  <svg 
+                    className="w-10 h-10 text-white" 
+                    fill="currentColor" 
+                    viewBox="0 0 20 20" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      fillRule="evenodd" 
+                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" 
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">{member.name}</h3>
+                  <p className="text-accent-light">{member.role}</p>
                 </div>
               </div>
+              <button
+                onClick={handleCloseClick}
+                className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200 text-white"
+                aria-label="Close"
+              >
+                <FaTimes className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+          
+          {/* Modal Body */}
+          <div className="p-6 max-h-[70vh] overflow-y-auto">
+            <div className="bg-muted-light/10 dark:bg-white/5 p-4 rounded-lg mb-6">
+              <p className="text-muted-light dark:text-text-dark/80 italic">
+                "{member.expertise} with {member.experience} of industry experience"
+              </p>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-text-light dark:text-text-dark flex items-center mb-4">
+                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
+                  Key Achievements
+                </h4>
+                <ul className="space-y-3 pl-4">
+                  {member.achievements.map((achievement, i) => (
+                    <motion.li 
+                      key={i}
+                      className="flex items-start"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                    >
+                      <span className="text-accent mr-2 mt-1">•</span>
+                      <span className="text-muted-light dark:text-text-dark/80">{achievement}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
               
-              <div className="w-full md:w-2/3">
-                <h3 className="text-3xl font-bold text-text-light dark:text-text-dark">
-                  {member.name}
-                </h3>
-                <p className="text-accent text-xl mb-4">{member.role}</p>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                      <FaTrophy className="w-5 h-5 text-accent" />
-                      Key Achievements
-                    </h4>
-                    <ul className="space-y-2">
-                      {member.achievements.map((achievement, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.1 }}
-                          className="flex items-center gap-2 text-muted-light dark:text-text-dark/80"
-                        >
-                          <FaStar className="w-4 h-4 text-accent" />
-                          {achievement}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                      <FaAward className="w-5 h-5 text-accent" />
-                      Core Skills
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.skills.map((skill, i) => (
-                        <motion.span
-                          key={i}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: i * 0.1 }}
-                          className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm"
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
+              <div>
+                <h4 className="text-lg font-semibold text-text-light dark:text-text-dark flex items-center mb-4">
+                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
+                  Core Skills
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {member.skills.map((skill, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="px-3 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
                 </div>
+              </div>
+            </div>
+            
+            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-white/10">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center space-x-4">
+                  {member.social.linkedin && (
+                    <motion.a 
+                      href={member.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -2 }}
+                      className="p-2 bg-accent/10 hover:bg-accent/20 rounded-full text-accent transition-colors"
+                    >
+                      <FaLinkedin className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                  {member.social.twitter && (
+                    <motion.a 
+                      href={member.social.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -2 }}
+                      className="p-2 bg-accent/10 hover:bg-accent/20 rounded-full text-accent transition-colors"
+                    >
+                      <FaTwitter className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                  {member.social.email && (
+                    <motion.a 
+                      href={`mailto:${member.social.email}`}
+                      whileHover={{ y: -2 }}
+                      className="p-2 bg-accent/10 hover:bg-accent/20 rounded-full text-accent transition-colors"
+                    >
+                      <FaEnvelope className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                </div>
+                
+                <motion.button 
+                  className="group inline-flex items-center px-6 py-3 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-colors duration-300 mt-4 sm:mt-0 w-full sm:w-auto justify-center"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Get in Touch
+                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </motion.button>
               </div>
             </div>
           </div>
