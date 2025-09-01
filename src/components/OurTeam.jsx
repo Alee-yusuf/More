@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaLinkedin, FaTwitter, FaEnvelope, FaAward, 
   FaBriefcase, FaClock, FaTrophy, FaStar, FaTimes,
-  FaArrowRight, FaUser 
+  FaUser, FaArrowRight
 } from 'react-icons/fa';
 
 const OurTeam = () => {
